@@ -1,0 +1,13 @@
+path: ../data/processed/yolo # Veri kök dizini
+train: images/train # data/processed/yolo/images/train
+val: images/val # data/processed/yolo/images/val
+
+# Sınıf Sayısı ve İsimleri
+nc: 6
+names:
+  0: crazing
+  1: inclusion
+  2: patches
+  3: pitted_surface
+  4: rolled-in_scale
+  5: scratches

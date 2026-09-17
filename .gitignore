@@ -1,0 +1,41 @@
+# Data (Sadece kök dizindeki verileri yoksay, src/data/ kodlarını engelleme)
+/data/
+
+# Models & Ağırlıklar (Sadece kök dizindeki models/ ve runs/ klasörlerini yoksay)
+/models/
+runs/
+**/runs/
+models/yolo_runs/
+*.pt
+*.pth
+*.ckpt
+*.joblib
+
+# Python Önbellekleri
+__pycache__/
+*.py[cod]
+
+# Jupyter Kontrol Noktaları
+.ipynb_checkpoints/
+
+# Sanal Ortamlar
+venv/
+.venv/
+env/
+.conda/
+
+# IDE Ayarları
+.vscode/
+.idea/
+
+# Test & Önbellek
+.pytest_cache/
+.mypy_cache/
+
+# Loglar ve Değişkenler
+*.log
+.env
+
+# İşletim Sistemi Kalıntıları
+.DS_Store
+Thumbs.db
