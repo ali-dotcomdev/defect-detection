@@ -142,8 +142,8 @@ Modelin fabrika otomasyon sistemlerine entegrasyonunu sağlamak amacıyla çıka
 
 1. **Depoyu klonlayın:**
    ```bash
-   git clone https://github.com/kullanici-adiniz/steel_defect_detection.git
-   cd steel_defect_detection
+   git clone https://github.com/kullanici-adiniz/defect-detection.git
+   cd defect-detection
    ```
 
 2. **Python sanal ortamı oluşturun ve aktif edin:**
