@@ -16,7 +16,7 @@ def extract_single_image_glcm(
     if distances is None:
         distances = [1, 3, 5]
     if angles is None:
-        angles = [0, np.pi / 4, np.pi / 2, 3 * np.pi / 4]
+        angles = [0, np.pi / 4, np.pi / 2, 3 * np.pi / 4] # 0, 45, 90, 135 
 
     img = cv2.imread(str(image_path), cv2.IMREAD_GRAYSCALE)
     if img is None:
@@ -67,6 +67,6 @@ def build_feature_dataset(metadata_df: pd.DataFrame, save_path: Optional[str] = 
             features_df.to_parquet(out_file, index=False)
         else:
             features_df.to_csv(out_file, index=False)
-        print(f"Öznitelikler kaydedildi -> {out_file}")
+        print(f"Features kaydedildi -> {out_file}")
 
     return features_df
