@@ -190,7 +190,21 @@ print(f"Genel mAP@50: %{metrics.box.map50 * 100:.2f}")
 ```
 
 ---
+### Experiment 02: Baseline Optimization (60 Epochs + Cosine LR)
 
+- **Hypothesis:** Eğitim süresini/döngüsünü Cosine Annealing LR scheduler ile 25 epoch'tan 60 epoch'a artırmanın, gradyan yetersizliğini azaltması ve ince yapılı hasar türlerinin precision değerini artırması beklenmektedir (crazing gibi kılcal çatlaklardan oluşan).
+- **Configuration:**
+  - Model: `YOLOv8n` (Pretrained)
+  - Input Resolution: `224x224`
+  - Optimizer: Cosine LR (`cos_lr=True`), `epochs=60`, `batch=32`
+- **Quantitative Results:**
+  - Peak mAP50: **72.59%** (Epoch 44)
+  - Final mAP50: **70.68%** (Epoch 59)
+  - Final Recall: **63.71%** | Precision: **67.51%**
+- **Forensic Findings:**
+  - **Convergence Plateau/Doyum Noktası:** `val/box_loss` epoch 35 (~1.55) doyum noktasına ulaşmış, model kapasitesinin `224x224` boyutunda ilerleyen epoch'larda verimin daha fazla artmayacağını, uzun süreli eğitim getirilerinin azaldığını göstermiştir.
+  - **Texture vs. Object Paradox:** High recall on directional, high-contrast defects (`scratches`, `inclusion`), fakat `crazing`de düşük güven skorları nedeniyle çok fazla belirsizlik bulunmakta (tüm doku yüzeyini iç içe geçmiş çok fazla bounding box kaplamakta) ve düşük spatial resolution değerine sahiptir.
+  - ### Conclusion: **Sorun epoch sayısının düşük olması değil. Hasar türlerine özgü çözümler denenmeli**.
 
 ---
 
